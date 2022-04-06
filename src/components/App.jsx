@@ -4,7 +4,7 @@ import ContactList from './contactList/ContactList';
 import Filter from './filter/Filter';
 import operations from '../redux/contacts/contacts-action';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import {getAllContacts} from "../redux/contacts/contacts-selectors"
+import {getAllContacts,getLoading} from "../redux/contacts/contacts-selectors"
 import { useState,useEffect } from 'react';
 
 const App = () => {
@@ -12,9 +12,9 @@ const App = () => {
    
     const contacts=useSelector(getAllContacts,shallowEqual)
     const dispatch=useDispatch();
-
+    const loading=useSelector(getLoading,shallowEqual)
+    console.log(loading);
     useEffect(() => {
-      console.log(operations.fetchContacts());
       dispatch(operations.fetchContacts());
     }, [dispatch])
    
@@ -47,9 +47,10 @@ const App = () => {
     <div className="registration__form">
       <h1>Phonebook</h1>
       <ContactForm addContact={addContact} />
-      <h2>Contacts</h2>
+      {loading ?"...Loading": <><h2>Contacts</h2>
       <Filter handleChange={handleChange} />
-      <ContactList names={filteredContacts()} removeHuman={removeContact}/>
+      <ContactList names={filteredContacts()} removeHuman={removeContact}/></>}
+      
     </div>
   );
 };
