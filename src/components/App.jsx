@@ -6,6 +6,8 @@ import operations from '../redux/contacts/contacts-action';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import {getAllContacts,getLoading} from "../redux/contacts/contacts-selectors"
 import { useState,useEffect } from 'react';
+import Loading from './Loading/Loading';
+
 
 const App = () => {
     const [filter,setFilter]=useState('')
@@ -47,9 +49,9 @@ const App = () => {
     <div className="registration__form">
       <h1>Phonebook</h1>
       <ContactForm addContact={addContact} />
-      {loading ?"...Loading": <><h2>Contacts</h2>
+      <h2>Contacts</h2>
       <Filter handleChange={handleChange} />
-      <ContactList names={filteredContacts()} removeHuman={removeContact}/></>}
+      {loading ? <Loading/>: <><ContactList names={filteredContacts()} removeHuman={removeContact}/></>}
       
     </div>
   );
