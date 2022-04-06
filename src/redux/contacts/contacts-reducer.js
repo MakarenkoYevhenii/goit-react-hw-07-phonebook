@@ -11,6 +11,7 @@ const contactSlise=createSlice({
         name:"contacts",
         initialState,
         extraReducers:{
+          
             [fetchContacts.pending]:(state)=>{
                 state.loading=true;
                 state.error=null;
@@ -18,6 +19,7 @@ const contactSlise=createSlice({
             [fetchContacts.fulfilled]:(state,{payload})=>{
                 state.items=[...payload];
                 state.loading=false;
+
             },
             [fetchContacts.rejected]:(state,{payload})=>{
                 state.loading=false;

@@ -11,16 +11,15 @@ const App = () => {
     const [filter,setFilter]=useState('')
    
     const contacts=useSelector(getAllContacts,shallowEqual)
-
     const dispatch=useDispatch();
 
     useEffect(() => {
       dispatch(operations.fetchContacts());
     }, [dispatch])
-    console.log(operations.addContact());
+   
     const addContact=(data)=> {
       const nameCheked=contacts.find((e)=>{
-        return (data.name === e.name && data.number===e.number)
+        return (data.name === e.name || (data.number*1)===(e.number*1))
       })
       if(nameCheked){
       return  alert (`this ${data.name} already exist`)
@@ -42,7 +41,7 @@ const App = () => {
       const {value}=target
       return setFilter(value)
   }
-    console.log(operations.deleteContact());
+
   return (
     <div className="registration__form">
       <h1>Phonebook</h1>
