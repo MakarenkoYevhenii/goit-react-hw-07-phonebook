@@ -14,12 +14,13 @@ const App = () => {
     const dispatch=useDispatch();
 
     useEffect(() => {
+      console.log(operations.fetchContacts());
       dispatch(operations.fetchContacts());
     }, [dispatch])
    
     const addContact=(data)=> {
       const nameCheked=contacts.find((e)=>{
-        return (data.name === e.name || (data.number*1)===(e.number*1))
+        return (data.name === e.name || (data.number)===(e.number))
       })
       if(nameCheked){
       return  alert (`this ${data.name} already exist`)

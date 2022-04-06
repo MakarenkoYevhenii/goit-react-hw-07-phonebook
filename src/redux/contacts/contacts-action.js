@@ -8,6 +8,7 @@ export const fetchContacts = createAsyncThunk(
       const result = await contactsAPI.getContacts();
       return result;
     } catch (error) {
+      alert("Sorry can't connect to server")
       return rejectWithValue(error);
     }
   }
@@ -19,6 +20,7 @@ export const addContact = createAsyncThunk(
       const result = await contactsAPI.addContact(data);
       return result;
     } catch (error) {
+      alert("Sorry can't add new users")
       return rejectWithValue(error);
     }
   }
@@ -31,6 +33,7 @@ export const deleteContact = createAsyncThunk(
       const result = await contactsAPI.deleteContact(id);
       return result.id;
     } catch (error) {
+      alert("Sorry can't remove users")
       return rejectWithValue(error);
     }
   }
