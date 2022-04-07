@@ -8,7 +8,7 @@ export const fetchContacts = createAsyncThunk(
       const result = await contactsAPI.getContacts();
       return result;
     } catch (error) {
-      alert("Sorry can't connect to server")
+      alert(error.message)
       return rejectWithValue(error);
     }
   }

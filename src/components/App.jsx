@@ -2,7 +2,7 @@ import ContactForm from './contactForm/ContactForm';
 
 import ContactList from './contactList/ContactList';
 import Filter from './filter/Filter';
-import operations from '../redux/contacts/contacts-action';
+import operations from '../redux/contacts/contacts-operations';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import {getAllContacts,getLoading} from "../redux/contacts/contacts-selectors"
 import { useState,useEffect } from 'react';
