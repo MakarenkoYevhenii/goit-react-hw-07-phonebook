@@ -20,7 +20,7 @@ export const addContact = createAsyncThunk(
       const result = await contactsAPI.addContact(data);
       return result;
     } catch (error) {
-      alert("Sorry can't add new users")
+      alert(`Sorry can't add new users ${error.message}`)
       return rejectWithValue(error);
     }
   }
@@ -33,7 +33,7 @@ export const deleteContact = createAsyncThunk(
       const result = await contactsAPI.deleteContact(id);
       return result.id;
     } catch (error) {
-      alert("Sorry can't remove users")
+      alert(`Sorry can't remove users ${error.message}`)
       return rejectWithValue(error);
     }
   }
